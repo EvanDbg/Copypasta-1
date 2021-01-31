@@ -23,6 +23,7 @@ BOOL useKeyboardInputModeSwitch;
 NSInteger styleValue;
 BOOL showNamesSwitch;
 BOOL showIconsSwitch;
+BOOL alwaysShowChevronSwitch;
 BOOL useBackgroundImageSwitch;
 double backgroundAlphaValue;
 

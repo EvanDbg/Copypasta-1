@@ -119,7 +119,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.headerLabel.topAnchor constraintEqualToAnchor:self.headerView.topAnchor constant:0],
         [self.headerLabel.leadingAnchor constraintEqualToAnchor:self.headerView.leadingAnchor constant:0],
-        [self.headerLabel.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor constant:50],
+        [self.headerLabel.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor constant:65],
         [self.headerLabel.widthAnchor constraintEqualToConstant:200],
     ]];
 
@@ -318,10 +318,10 @@
         [self.tableView setHidden:YES];
         if (animated) {
             [UIView animateWithDuration:(0.15) delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                [self setHeight:0];
+                [self setHeight:30];
             } completion:NULL];
         } else {
-            [self setHeight:0];
+            [self setHeight:30];
         }
     }
 

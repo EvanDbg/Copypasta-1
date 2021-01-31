@@ -135,6 +135,20 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
+			<string>Always Show Chevron</string>
+			<key>key</key>
+			<string>alwaysShowChevron</string>
+			<key>PostNotification</key>
+			<string>love.litten.copypastapreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>love.litten.copypastapreferences</string>
+			<key>label</key>
 			<string>Background Image</string>
 			<key>key</key>
 			<string>useBackgroundImage</string>

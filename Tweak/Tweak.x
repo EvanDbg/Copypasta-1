@@ -23,13 +23,13 @@ UIKeyboardInputMode* inputMode;
         cpaView.dismissAfterPaste = dismissAfterPasteSwitch;
         cpaView.playsHapticFeedback = hapticFeedbackSwitch;
         cpaView.tableHeight = heightValue;
-        cpaView.dismissesFully = YES;
+        cpaView.dismissesFully = !alwaysShowChevronSwitch;
         
         [cpaView recreateBlur];
         [cpaView refresh];
     }
     
-    [cpaView hide:YES animated:NO];
+    [cpaView hide:!alwaysShowChevronSwitch animated:YES];
     
     [[self view] addSubview:cpaView];
 
@@ -55,7 +55,7 @@ UIKeyboardInputMode* inputMode;
 
     %orig;
 
-    [cpaView hide:NO animated:NO];
+    if (cpaView.isOpenFully) [cpaView hide:!alwaysShowChevronSwitch animated:YES];
 
 }
 
@@ -234,6 +234,7 @@ void reloadItems() { // reload saved items
     [preferences registerInteger:&styleValue default:0 forKey:@"style"];
     [preferences registerBool:&showNamesSwitch default:YES forKey:@"showNames"];
     [preferences registerBool:&showIconsSwitch default:YES forKey:@"showIcons"];
+    [preferences registerBool:&alwaysShowChevronSwitch default:NO forKey:@"alwaysShowChevron"];
     [preferences registerBool:&useBackgroundImageSwitch default:NO forKey:@"useBackgroundImage"];
     [preferences registerDouble:&backgroundAlphaValue default:0.5 forKey:@"backgroundAlpha"];
 
@@ -255,7 +256,7 @@ void reloadItems() { // reload saved items
         cpaView.dismissAfterPaste = dismissAfterPasteSwitch;
         cpaView.playsHapticFeedback = hapticFeedbackSwitch;
         cpaView.tableHeight = heightValue;
-        cpaView.dismissesFully = YES;
+        cpaView.dismissesFully = !alwaysShowChevronSwitch;
         
         [cpaView recreateBlur];
         [cpaView refresh];
