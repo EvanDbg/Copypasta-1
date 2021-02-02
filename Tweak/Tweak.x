@@ -4,6 +4,8 @@ BOOL enabled;
 
 UIKeyboardInputMode* inputMode;
 
+void showCopypastaWithNotification();
+
 %group Copypasta
 
 %hook UIInputWindowController
@@ -147,7 +149,7 @@ UIKeyboardInputMode* inputMode;
 
 }
 
-- (NSString* )displayName { // add keyboard input mode
+- (NSString *)displayName { // add keyboard input mode
 
     if (!useKeyboardInputModeSwitch) return %orig;
     if ([[self identifier] isEqualToString:@"Copypasta"])
@@ -170,10 +172,23 @@ UIKeyboardInputMode* inputMode;
 
 %hook UIKeyboardInputModeController
 
-- (NSArray* )keyboardInputModes { // add keyboard input mode
+- (NSArray *)keyboardInputModes { // add keyboard input mode
 
     if (!useKeyboardInputModeSwitch) return %orig;
     return [%orig arrayByAddingObjectsFromArray:@[[%c(UIKeyboardInputMode) keyboardInputModeWithIdentifier:@"Copypasta"]]];
+
+}
+
+%end
+
+%hook SpringBoard
+
+- (void)applicationDidFinishLaunching:(id)arg1 { // add notification observer
+
+    %orig;
+
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Shortmoji.dylib"])
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)showCopypastaWithNotification, (CFStringRef)@"love.litten.copypasta/showWithNotification", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
 
 }
 
@@ -188,6 +203,12 @@ void reloadItems() { // reload saved items
         [cpaView refresh];
         [cpaView.tableView setContentOffset:CGPointZero animated:YES];
     }
+
+}
+
+void showCopypastaWithNotification() { // show copypasta with a notification
+
+    [cpaView show:YES animated:YES];
 
 }
 
@@ -219,7 +240,6 @@ void reloadItems() { // reload saved items
 
 	if (!shouldLoad) return;
 
-
     preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.copypastapreferences"];
     cpaObserver = [[CPAObserver alloc] init];
 
@@ -232,6 +252,7 @@ void reloadItems() { // reload saved items
 
     // style
     [preferences registerInteger:&styleValue default:0 forKey:@"style"];
+    [preferences registerBool:&blurryBackgroundSwitch default:NO forKey:@"blurryBackground"];
     [preferences registerBool:&showNamesSwitch default:YES forKey:@"showNames"];
     [preferences registerBool:&showIconsSwitch default:YES forKey:@"showIcons"];
     [preferences registerBool:&alwaysShowChevronSwitch default:NO forKey:@"alwaysShowChevron"];

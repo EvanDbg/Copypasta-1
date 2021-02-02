@@ -103,6 +103,20 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>love.litten.copypastapreferences</string>
+			<key>label</key>
+			<string>Blurry Background</string>
+			<key>key</key>
+			<string>blurryBackground</string>
+			<key>PostNotification</key>
+			<string>love.litten.copypastapreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
 			<true/>
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
@@ -282,7 +296,7 @@
 			<key>min</key>
 			<integer>2</integer>
 			<key>max</key>
-			<integer>20</integer>
+			<integer>60</integer>
 			<key>showValue</key>
 			<true/>
 			<key>isSegmented</key>
@@ -361,13 +375,13 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Lisa</string>
+			<string>Copylog</string>
 			<key>subtitle</key>
-			<string>Full incoming OLED notifications</string>
+			<string>Fully Fledged Clipboard Manager</string>
 			<key>icon</key>
-			<string>Lisa.png</string>
+			<string>Copylog.png</string>
 			<key>url</key>
-			<string>https://repo.litten.love/depictions/lsa/</string>
+			<string>https://repo.packix.com/package/me.tomt000.copylog/</string>
 		</dict>
 
 		<dict>
@@ -397,6 +411,16 @@
 			<string>GitHub 🎃</string>
 			<key>url</key>
 			<string>https://github.com/Litteeen/Copypasta</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Donate To Litten</string>
+			<key>subtitle</key>
+			<string>Appreciated 💝</string>
+			<key>url</key>
+			<string>https://paypal.me/Litteeen</string>
 		</dict>
 
 		<dict>

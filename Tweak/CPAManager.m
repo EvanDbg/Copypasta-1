@@ -58,7 +58,7 @@
 
 }
 
-- (void)addItem:(CPAItem* )item {
+- (void)addItem:(CPAItem *)item {
 
     if ([_items count] >= self.numberOfItems) {
         [_items removeObjectsInRange:NSMakeRange(self.numberOfItems - 1, [_items count] - self.numberOfItems + 1)];
@@ -69,7 +69,7 @@
 
 }
 
-- (void)removeItem:(CPAItem* )item {
+- (void)removeItem:(CPAItem *)item {
 
     [_items removeObject:item];
     [_favoriteItems removeObject:item];
@@ -77,7 +77,7 @@
 
 }
 
-- (void)favoriteItem:(CPAItem* )item {
+- (void)favoriteItem:(CPAItem *)item {
 
     [_items removeObject:item];
     [_favoriteItems insertObject:item atIndex:0];

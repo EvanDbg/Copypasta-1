@@ -21,6 +21,7 @@ BOOL useKeyboardInputModeSwitch;
 
 // style
 NSInteger styleValue;
+BOOL blurryBackgroundSwitch;
 BOOL showNamesSwitch;
 BOOL showIconsSwitch;
 BOOL alwaysShowChevronSwitch;
@@ -46,11 +47,11 @@ NSInteger numberOfItemsValue;
 
 @interface UIKeyboardImpl : UIView
 + (id)activeInstance;
-- (void)insertText:(NSString* )text;
+- (void)insertText:(NSString *)text;
 + (Class)layoutClassForCurrentInputMode;
 @end
 
 @interface UIKeyboardInputMode : NSObject
-- (NSString* )identifier;
+- (NSString *)identifier;
 + (id)keyboardInputModeWithIdentifier:(id)arg1;
 @end

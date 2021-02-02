@@ -1,7 +1,7 @@
 #import <Cephei/HBPreferences.h>
 
 @interface CPAView : UIView <UITableViewDelegate,UITableViewDataSource>
-@property(nonatomic, retain) HBPreferences* preferences;
+@property(nonatomic, retain)HBPreferences* preferences;
 @property(nonatomic, retain)UIImage* placeholderImage;
 @property(nonatomic, retain)UIButton* dismissButton;
 @property(nonatomic, retain)UIVisualEffectView* blurView;
@@ -31,7 +31,7 @@
 - (void)toggle;
 - (void)show:(BOOL)fully animated:(BOOL)animated;
 - (void)hide:(BOOL)fully animated:(BOOL)animated;
-- (void)cpaPaste:(NSString*)text;
+- (void)cpaPaste:(NSString *)text;
 - (void)recreateBlur;
 - (void)setHeight:(CGFloat)height;
 - (void)preloadIcons;

@@ -10,8 +10,8 @@
 - (void)reload;
 - (NSMutableArray*)items;
 - (NSMutableArray*)favoriteItems;
-- (void)addItem:(CPAItem* )item;
-- (void)removeItem:(CPAItem* )item;
-- (void)favoriteItem:(CPAItem* )item;
+- (void)addItem:(CPAItem *)item;
+- (void)removeItem:(CPAItem *)item;
+- (void)favoriteItem:(CPAItem *)item;
 - (void)save;
 @end

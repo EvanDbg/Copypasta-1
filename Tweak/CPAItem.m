@@ -2,7 +2,7 @@
 
 @implementation CPAItem
 
-+ (CPAItem* )itemWithContent:(NSString* )content title:(NSString* )title bundleId:(NSString* )bundleId {
++ (CPAItem *)itemWithContent:(NSString *)content title:(NSString *)title bundleId:(NSString *)bundleId {
 
     CPAItem* item = [CPAItem alloc];
     item.content = content;

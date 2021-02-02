@@ -9,7 +9,7 @@
 
 @implementation UIImage (scale)
 
-- (UIImage* )scaleImageToSize:(CGSize)newSize {
+- (UIImage *)scaleImageToSize:(CGSize)newSize {
   
   CGRect scaledImageRect = CGRectZero;
   
@@ -177,13 +177,13 @@
     [self.blurView removeFromSuperview];
 
     if (self.darkMode) {
-        self.backgroundColor = [UIColor blackColor];
+        if (![[preferences objectForKey:@"blurryBackground"] boolValue]) self.backgroundColor = [UIColor blackColor];
         self.dismissButton.tintColor = [UIColor whiteColor];
         self.listEmptyLabel.textColor = [UIColor whiteColor];
         self.headerLabel.textColor = [UIColor whiteColor];
         self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     } else {
-        self.backgroundColor = [UIColor whiteColor];
+        if (![[preferences objectForKey:@"blurryBackground"] boolValue]) self.backgroundColor = [UIColor whiteColor];
         self.dismissButton.tintColor = [UIColor blackColor];
         self.listEmptyLabel.textColor = [UIColor blackColor];
         self.headerLabel.textColor = [UIColor blackColor];
@@ -197,7 +197,7 @@
     
     self.blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     self.blurView.frame = self.bounds;
-    self.blurView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.60];
+    if (![[preferences objectForKey:@"blurryBackground"] boolValue]) self.blurView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.60];
     self.blurView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self insertSubview:self.blurView atIndex:0];
 
@@ -362,25 +362,26 @@
 
 }
 
-- (void)cpaPaste:(NSString* )text {
+- (void)cpaPaste:(NSString *)text {
+    
     UIKeyboardImpl* impl = [NSClassFromString(@"UIKeyboardImpl") activeInstance];
     [impl insertText:text];
 
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView* )tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 2;
 
 }
 
-- (NSInteger)tableView:(UITableView* )tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return [((section == 0) ? [[CPAManager sharedInstance] favoriteItems] : [[CPAManager sharedInstance] items]) count];
     
 }
 
-- (UITableViewCell* )tableView:(UITableView* )tableView cellForRowAtIndexPath:(NSIndexPath* )indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"] ?: [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 
@@ -438,7 +439,7 @@
 
 }
 
-- (void)tableView:(UITableView* )tableView didSelectRowAtIndexPath:(NSIndexPath* )indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (self.playsHapticFeedback) AudioServicesPlaySystemSound(1519);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -454,7 +455,7 @@
 
 }
 
-- (NSArray* )tableView:(UITableView* )tableView editActionsForRowAtIndexPath:(NSIndexPath* )indexPath {
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewRowAction* favoriteAction = nil;
 
