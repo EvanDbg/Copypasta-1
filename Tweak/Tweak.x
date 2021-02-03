@@ -181,19 +181,6 @@ void showCopypastaWithNotification();
 
 %end
 
-%hook SpringBoard
-
-- (void)applicationDidFinishLaunching:(id)arg1 { // add notification observer
-
-    %orig;
-
-    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Shortmoji.dylib"])
-        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)showCopypastaWithNotification, (CFStringRef)@"love.litten.copypasta/showWithNotification", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
-
-}
-
-%end
-
 %end
 
 void reloadItems() { // reload saved items
@@ -206,9 +193,10 @@ void reloadItems() { // reload saved items
 
 }
 
-void showCopypastaWithNotification() { // show copypasta with a notification
+void showCopypastaWithNotification() {
 
-    [cpaView show:YES animated:YES];
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
+        [cpaView show:YES animated:YES];
 
 }
 
@@ -285,6 +273,7 @@ void showCopypastaWithNotification() { // show copypasta with a notification
 
     if (enabled) {
         %init(Copypasta);
+        if (!isSpringboard && [[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Shortmoji.dylib"]) CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)showCopypastaWithNotification, (CFStringRef)@"love.litten.copypasta/showWithNotification", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
         CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItems, (CFStringRef)@"love.litten.copypasta/ReloadItems", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
     }
 
