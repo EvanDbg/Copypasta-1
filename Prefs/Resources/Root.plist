@@ -15,7 +15,7 @@
 			<key>secondLabel</key>
 			<string>🌸 Litten</string>
 			<key>secondAccount</key>
-			<string>Litteeen</string>
+			<string>schneelittchen</string>
 			<key>height</key>
 			<real>57</real>
 		</dict>
@@ -410,7 +410,7 @@
 			<key>subtitle</key>
 			<string>GitHub 🎃</string>
 			<key>url</key>
-			<string>https://github.com/Litteeen/Copypasta</string>
+			<string>https://github.com/schneelittchen/Copypasta</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
