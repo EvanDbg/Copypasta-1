@@ -6,6 +6,9 @@
 #import <Cephei/HBRespringController.h>
 #import "GcUniversal/GcImagePickerUtils.h"
 #import "SparkAppListTableViewController.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#include <mach/machine.h>
 
 @interface CPAAppearanceSettings : HBAppearanceSettings
 @end

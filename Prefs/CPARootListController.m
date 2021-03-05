@@ -125,23 +125,35 @@ UIVisualEffectView* blurView;
 
     [self setEnableSwitchState];
 
+    size_t size;
+    cpu_type_t type;
+    cpu_subtype_t subtype;
+    size = sizeof(type);
+    sysctlbyname("hw.cputype", &type, &size, NULL, 0);
+    size = sizeof(subtype);
+    sysctlbyname("hw.cpusubtype", &subtype, &size, NULL, 0);
+
+    if (type == 16777228 && subtype == 2) {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"You're using an arm64e device, you may or may not experience issues with this tweak on this architecture" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Understood" style:UIAlertActionStyleDestructive handler:nil];
+
+        [alertController addAction:confirmAction];
+
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+
     if (![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Copypasta.disabled"]) return;
     [[self enableSwitch] setEnabled:NO];
-
-    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta"
-	message:@"Copypasta Preferences disabled due to Copypasta being disabled with iCleaner Pro"
-	preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"Copypasta Preferences disabled due to Copypasta being disabled with iCleaner Pro" preferredStyle:UIAlertControllerStyleAlert];
 	
     UIAlertAction* resetAction = [UIAlertAction actionWithTitle:@"Reset Preferences" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-			
         [self resetPreferences];
-
 	}];
 
     UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Okey" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
-			
         [[self navigationController] popViewControllerAnimated:YES];
-
 	}];
 
 	[alertController addAction:confirmAction];
@@ -235,9 +247,7 @@ UIVisualEffectView* blurView;
 
 - (void)resetPrompt {
 
-    UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta"
-	message:@"Do You Really Want To Reset Your Preferences?"
-	preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"Do you really want to reset your preferences?" preferredStyle:UIAlertControllerStyleActionSheet];
 	
     UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Yaw" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
         [self resetPreferences];
@@ -265,9 +275,7 @@ UIVisualEffectView* blurView;
 
 - (void)resetClipboardPrompt {
 
-    UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta"
-	message:@"This Will Reset Your Clipboard"
-	preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"This will reset your clipboard" preferredStyle:UIAlertControllerStyleActionSheet];
 	
     UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Okey" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
         [self resetClipboard];
