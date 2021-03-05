@@ -215,6 +215,32 @@
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
 		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>Height</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>350.0</real>
+			<key>defaults</key>
+			<string>love.litten.copypastapreferences</string>
+			<key>key</key>
+			<string>height</string>
+			<key>min</key>
+			<real>150.0</real>
+			<key>max</key>
+			<real>400.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isSegmented</key>
+			<false/>
+			<key>PostNotification</key>
+			<string>love.litten.copypastapreferences/ReloadPrefs</string>
+		</dict>
 
 		<dict>
 			<key>cell</key>
@@ -250,32 +276,39 @@
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
 		</dict>
-
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
+			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Height</string>
+			<string>Maximum Items</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>default</key>
-			<real>350.0</real>
+			<integer>10</integer>
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>key</key>
-			<string>height</string>
+			<string>numberOfItems</string>
 			<key>min</key>
-			<real>150.0</real>
+			<integer>2</integer>
 			<key>max</key>
-			<real>400.0</real>
+			<integer>60</integer>
 			<key>showValue</key>
 			<true/>
 			<key>isSegmented</key>
-			<false/>
+			<true/>
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Blacklist Apps</string>
+			<key>action</key>
+			<string>blacklistApps</string>
 		</dict>
 
 		<dict>
@@ -334,48 +367,6 @@
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
         </dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Number Of Items</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>default</key>
-			<integer>10</integer>
-			<key>defaults</key>
-			<string>love.litten.copypastapreferences</string>
-			<key>key</key>
-			<string>numberOfItems</string>
-			<key>min</key>
-			<integer>2</integer>
-			<key>max</key>
-			<integer>60</integer>
-			<key>showValue</key>
-			<true/>
-			<key>isSegmented</key>
-			<true/>
-			<key>PostNotification</key>
-			<string>love.litten.copypastapreferences/ReloadPrefs</string>
-		</dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Blacklist</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Blacklist Apps</string>
-			<key>action</key>
-			<string>blacklistApps</string>
-		</dict>
 
 		<dict>
 			<key>cell</key>

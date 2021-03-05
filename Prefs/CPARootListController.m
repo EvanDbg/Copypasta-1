@@ -266,14 +266,14 @@ UIVisualEffectView* blurView;
 - (void)resetClipboardPrompt {
 
     UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta"
-	message:@"Do You Really Want To Reset Your Clipboard?"
+	message:@"This Will Reset Your Clipboard"
 	preferredStyle:UIAlertControllerStyleActionSheet];
 	
-    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Yaw" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Okey" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
         [self resetClipboard];
 	}];
 
-	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Naw" style:UIAlertActionStyleCancel handler:nil];
+	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
 
 	[resetAlert addAction:confirmAction];
 	[resetAlert addAction:cancelAction];

@@ -3,7 +3,7 @@
 
 @interface CPAObserver : NSObject
 @property(nonatomic, retain)NSString* lastContent;
-@property(nonatomic, retain)  HBPreferences* preferences;
+@property(nonatomic, retain)HBPreferences* preferences;
 - (id)init;
 - (void)pasteboardUpdated;
 @end
