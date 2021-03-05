@@ -26,6 +26,7 @@ BOOL blurryBackgroundSwitch;
 BOOL showNamesSwitch;
 BOOL showIconsSwitch;
 BOOL alwaysShowChevronSwitch;
+BOOL hideChevronSwitch;
 BOOL useBackgroundImageSwitch;
 double backgroundAlphaValue;
 

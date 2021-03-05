@@ -25,7 +25,7 @@ UIVisualEffectView* blurView;
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
         self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.titleLabel.text = @"1.2.2";
+        self.titleLabel.text = @"1.3";
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         [self.navigationItem.titleView addSubview:self.titleLabel];
@@ -258,7 +258,7 @@ UIVisualEffectView* blurView;
     [preferences removeAllObjects];
     [[NSFileManager defaultManager] removeItemAtPath:@"/var/mobile/Library/Preferences/love.litten.copypastapreferences/" error:nil];
     
-    [[self enableSwitch] setOn:NO animated: YES];
+    [[self enableSwitch] setOn:NO animated:YES];
     [self respring];
 
 }

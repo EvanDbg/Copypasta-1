@@ -25,6 +25,10 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Activation</string>
+			<key>footerText</key>
+			<string>These Will Be Ignored If Always Show Chevron Is Enabled</string>
+			<key>isStaticText</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -34,7 +38,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Use Swipe Up</string>
+			<string>Swipe Up</string>
 			<key>key</key>
 			<string>useSwipeUp</string>
 			<key>PostNotification</key>
@@ -48,7 +52,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Use Dictation Key</string>
+			<string>Dictation Key</string>
 			<key>key</key>
 			<string>useDictationKey</string>
 			<key>PostNotification</key>
@@ -62,7 +66,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Use Keyboard Input Mode</string>
+			<string>Keyboard Input Mode</string>
 			<key>key</key>
 			<string>useKeyboardInputMode</string>
 			<key>PostNotification</key>
@@ -152,6 +156,20 @@
 			<string>Always Show Chevron</string>
 			<key>key</key>
 			<string>alwaysShowChevron</string>
+			<key>PostNotification</key>
+			<string>love.litten.copypastapreferences/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>love.litten.copypastapreferences</string>
+			<key>label</key>
+			<string>Hide Chevron</string>
+			<key>key</key>
+			<string>hideChevron</string>
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
 		</dict>
@@ -440,7 +458,7 @@
 			<key>label</key>
 			<string>Copylog</string>
 			<key>subtitle</key>
-			<string>Fully Fledged Clipboard Manager</string>
+			<string>Fully fledged clipboard manager</string>
 			<key>icon</key>
 			<string>Copylog.png</string>
 			<key>url</key>

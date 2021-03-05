@@ -30,10 +30,10 @@ void showCopypastaWithNotification();
         [cpaView recreateBlur];
         [cpaView refresh];
     }
+
+    [cpaView hide:!alwaysShowChevronSwitch animated:NO];
     
-    [cpaView hide:!alwaysShowChevronSwitch animated:YES];
-    
-    [[self view] addSubview:cpaView];
+    if (![cpaView isDescendantOfView:[self view]]) [[self view] addSubview:cpaView];
 
 }
 
@@ -43,27 +43,27 @@ void showCopypastaWithNotification();
 
 - (id)initWithFrame:(CGRect)arg1 { // add swipe up gesture
 
-    if (useSwipeUpSwitch) {
-        upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-        [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
-        [self addGestureRecognizer:upSwipe];
-    }
+    if (!useSwipeUpSwitch || alwaysShowChevronSwitch) return %orig;
+    upSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    [upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self addGestureRecognizer:upSwipe];
 
     return %orig;
 
 }
 
-- (void)didMoveToWindow { // hide copypasta when keyboard was dismissed
+- (void)didMoveToWindow { // show or hide copypasta when keyboard appeared or disappeared
 
     %orig;
 
+    if (alwaysShowChevronSwitch) [cpaView show:NO animated:YES];
     if (cpaView.isOpenFully) [cpaView hide:!alwaysShowChevronSwitch animated:YES];
 
 }
 
 - (UIKBTree *)keyHitTest:(CGPoint)arg1 {  // show copypasta when pressing dictation key (old keyboard)
 
-    if (!useDictationKeySwitch) return %orig;
+    if (!useDictationKeySwitch || alwaysShowChevronSwitch) return %orig;
     UIKBTree* orig = %orig;
     if (orig && [orig.name isEqualToString:@"Dictation-Key"]) {
         orig.properties[@"KBinteractionType"] = @(0);
@@ -94,7 +94,7 @@ void showCopypastaWithNotification();
 
 - (void)dictationItemButtonWasPressed:(id)arg1 withEvent:(id)arg2 { // show copypasta when pressing dictation key (new keyboard)
 
-    if (!useDictationKeySwitch) {
+    if (!useDictationKeySwitch || alwaysShowChevronSwitch) {
         %orig;
         return;
     }
@@ -110,14 +110,14 @@ void showCopypastaWithNotification();
 
 - (BOOL)shouldShowDictationKey { // always show dictation key
 
-    if (useDictationKeySwitch) return YES;
+    if (useDictationKeySwitch && !alwaysShowChevronSwitch) return YES;
     return %orig;
 
 }
 
 + (Class)layoutClassForInputMode:(id)arg1 keyboardType:(long long)arg2 screenTraits:(id)arg3 { // show copypasta when selecting keyboard mode
 
-    if (!useKeyboardInputModeSwitch) return %orig;
+    if (!useKeyboardInputModeSwitch || alwaysShowChevronSwitch) return %orig;
     if ([arg1 isEqualToString:@"Copypasta"]) {
         if (hapticFeedbackSwitch && !cpaView.isOpenFully) AudioServicesPlaySystemSound(1519);
         [cpaView show:YES animated:YES];
@@ -134,7 +134,7 @@ void showCopypastaWithNotification();
 
 + (id)keyboardInputModeWithIdentifier:(id)arg1 { // add keyboard input mode
 
-    if (!useKeyboardInputModeSwitch) return %orig;
+    if (!useKeyboardInputModeSwitch || alwaysShowChevronSwitch) return %orig;
     if ([arg1 isEqualToString:@"Copypasta"]){
         if (!inputMode) {
             id orig = %orig(@"en_US");
@@ -151,7 +151,7 @@ void showCopypastaWithNotification();
 
 - (NSString *)displayName { // add keyboard input mode
 
-    if (!useKeyboardInputModeSwitch) return %orig;
+    if (!useKeyboardInputModeSwitch || alwaysShowChevronSwitch) return %orig;
     if ([[self identifier] isEqualToString:@"Copypasta"])
         return @"Copypasta";
 
@@ -160,7 +160,7 @@ void showCopypastaWithNotification();
 
 - (id)primaryLanguage { // add keyboard input mode
     
-    if (!useKeyboardInputModeSwitch) return %orig;
+    if (!useKeyboardInputModeSwitch || alwaysShowChevronSwitch) return %orig;
     if ([[self identifier] isEqualToString:@"Copypasta"])
         return @"Copypasta";
 
@@ -174,7 +174,7 @@ void showCopypastaWithNotification();
 
 - (NSArray *)keyboardInputModes { // add keyboard input mode
 
-    if (!useKeyboardInputModeSwitch) return %orig;
+    if (!useKeyboardInputModeSwitch || alwaysShowChevronSwitch) return %orig;
     return [%orig arrayByAddingObjectsFromArray:@[[%c(UIKeyboardInputMode) keyboardInputModeWithIdentifier:@"Copypasta"]]];
 
 }
@@ -244,6 +244,7 @@ void showCopypastaWithNotification() {
     [preferences registerBool:&showNamesSwitch default:YES forKey:@"showNames"];
     [preferences registerBool:&showIconsSwitch default:YES forKey:@"showIcons"];
     [preferences registerBool:&alwaysShowChevronSwitch default:NO forKey:@"alwaysShowChevron"];
+    [preferences registerBool:&hideChevronSwitch default:NO forKey:@"hideChevron"];
     [preferences registerBool:&useBackgroundImageSwitch default:NO forKey:@"useBackgroundImage"];
     [preferences registerDouble:&backgroundAlphaValue default:0.5 forKey:@"backgroundAlpha"];
 

@@ -13,6 +13,3 @@ Minimalist clipboard manager
 If you take code from this repository please link it, or Nepeta's [twitter](https://twitter.com/NepetaDev) and my [twitter](https://twitter.com/schneelittchen) to your project  
 You may not redistribute this source code or packages from it  
 You may not use this project to make profit like money
-
-
-there might still be some unnecessary code, i will clean that up

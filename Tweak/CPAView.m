@@ -111,7 +111,7 @@
     [self.dismissButton addTarget:self action:@selector(toggle) forControlEvents:UIControlEventTouchUpInside];
     self.dismissButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.dismissButton setTitle:NULL forState:UIControlStateNormal];
-    [self.dismissButton setImage:[[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/CopypastaPrefs.bundle/chevron.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    if (![[preferences objectForKey:@"hideChevron"] isEqual:@(YES)]) [self.dismissButton setImage:[[UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/CopypastaPrefs.bundle/chevron.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [self addSubview:self.dismissButton];
 
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
