@@ -1,10 +1,9 @@
 BUNDLE_NAME = CopypastaPrefs
 $(BUNDLE_NAME)_FILES = $(wildcard *.m)
 $(BUNDLE_NAME)_INSTALL_PATH = /Library/PreferenceBundles
-$(BUNDLE_NAME)_FRAMEWORKS = UIKit
 $(BUNDLE_NAME)_PRIVATE_FRAMEWORKS = Preferences
 $(BUNDLE_NAME)_EXTRA_FRAMEWORKS = Cephei CepheiPrefs
-$(BUNDLE_NAME)_LIBRARIES = gcuniversal
+$(BUNDLE_NAME)_LIBRARIES = gcuniversal sparkapplist
 ADDITIONAL_CFLAGS += -DTHEOS_LEAN_AND_MEAN
 
 include $(THEOS)/makefiles/common.mk

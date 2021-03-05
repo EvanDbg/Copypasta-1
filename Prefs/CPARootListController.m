@@ -224,6 +224,15 @@ UIVisualEffectView* blurView;
 
 }
 
+- (void)blacklistApps {
+
+    SparkAppListTableViewController* blacklistController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"love.litten.copypasta.blacklistpreferences" andKey:@"blacklistedApps"];
+
+    [[self navigationController] pushViewController:blacklistController animated:YES];
+    [[self navigationItem] setHidesBackButton:NO];
+
+}
+
 - (void)resetPrompt {
 
     UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta"

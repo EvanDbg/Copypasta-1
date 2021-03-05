@@ -3,6 +3,7 @@
 #import "CPAView.h"
 #import "CPAManager.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "SparkAppList.h"
 #import <Cephei/HBPreferences.h>
 
 HBPreferences* preferences;

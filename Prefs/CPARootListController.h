@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
 #import <CepheiPrefs/HBRootListController.h>
@@ -6,6 +5,7 @@
 #import <Cephei/HBPreferences.h>
 #import <Cephei/HBRespringController.h>
 #import "GcUniversal/GcImagePickerUtils.h"
+#import "SparkAppListTableViewController.h"
 
 @interface CPAAppearanceSettings : HBAppearanceSettings
 @end
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) UIImageView *iconView;
 - (void)toggleState;
 - (void)setEnableSwitchState;
+- (void)blacklistApps;
 - (void)resetPrompt;
 - (void)resetPreferences;
 - (void)resetClipboardPrompt;

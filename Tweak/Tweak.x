@@ -195,13 +195,13 @@ void reloadItems() { // reload saved items
 
 void showCopypastaWithNotification() {
 
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)
-        [cpaView show:YES animated:YES];
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) [cpaView show:YES animated:YES];
 
 }
 
 %ctor {
 
+    if ([SparkAppList doesIdentifier:@"love.litten.copypasta.blacklistpreferences" andKey:@"blacklistedApps" containBundleIdentifier:[[NSBundle mainBundle] bundleIdentifier]]) return;
     if (![NSProcessInfo processInfo]) return;
     NSString* processName = [NSProcessInfo processInfo].processName;
     BOOL isSpringboard = [@"SpringBoard" isEqualToString:processName];
@@ -229,7 +229,7 @@ void showCopypastaWithNotification() {
 	if (!shouldLoad) return;
 
     preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.copypastapreferences"];
-    cpaObserver = [[CPAObserver alloc] init];
+    cpaObserver = [CPAObserver new];
 
     [preferences registerBool:&enabled default:nil forKey:@"Enabled"];
 
