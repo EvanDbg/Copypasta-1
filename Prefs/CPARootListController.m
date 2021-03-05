@@ -134,7 +134,7 @@ UIVisualEffectView* blurView;
     sysctlbyname("hw.cpusubtype", &subtype, &size, NULL, 0);
 
     if (type == 16777228 && subtype == 2) {
-        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"You're using an arm64e device, you may or may not experience issues with this tweak on this architecture" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"You're using an arm64e device, you may or may not experience issues with this tweak on this architecture\n\n If some system apps start crashing, either uninstall this tweak or install choicy and blacklist Copypasta from injecting into that app" preferredStyle:UIAlertControllerStyleAlert];
 
         UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Understood" style:UIAlertActionStyleDestructive handler:nil];
 
