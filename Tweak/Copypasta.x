@@ -1,8 +1,6 @@
 #import "Copypasta.h"
 
-BOOL enabled;
-
-UIKeyboardInputMode* inputMode;
+UIKeyboardInputMode* inputMode = nil;
 
 void showCopypastaWithNotification();
 
@@ -231,7 +229,8 @@ void showCopypastaWithNotification() {
     preferences = [[HBPreferences alloc] initWithIdentifier:@"love.litten.copypastapreferences"];
     cpaObserver = [CPAObserver new];
 
-    [preferences registerBool:&enabled default:nil forKey:@"Enabled"];
+    [preferences registerBool:&enabled default:NO forKey:@"Enabled"];
+    if (!enabled) return;
 
     // activation
     [preferences registerBool:&useSwipeUpSwitch default:YES forKey:@"useSwipeUp"];
@@ -272,10 +271,8 @@ void showCopypastaWithNotification() {
         [cpaView refresh];
     }];
 
-    if (enabled) {
-        %init(Copypasta);
-        if (!isSpringboard && [[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Shortmoji.dylib"]) CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)showCopypastaWithNotification, (CFStringRef)@"love.litten.copypasta/showWithNotification", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
-        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItems, (CFStringRef)@"love.litten.copypasta/ReloadItems", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
-    }
+    %init(Copypasta);
+    if (!isSpringboard && [[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Shortmoji.dylib"]) CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)showCopypastaWithNotification, (CFStringRef)@"love.litten.copypasta/showWithNotification", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)reloadItems, (CFStringRef)@"love.litten.copypasta/ReloadItems", NULL, (CFNotificationSuspensionBehavior)kNilOptions);
 
 }

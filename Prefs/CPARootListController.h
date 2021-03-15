@@ -4,35 +4,24 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <Cephei/HBPreferences.h>
 #import <Cephei/HBRespringController.h>
-#import "GcUniversal/GcImagePickerUtils.h"
-#import "SparkAppListTableViewController.h"
-#include <sys/types.h>
-#include <sys/sysctl.h>
-#include <mach/machine.h>
 
 @interface CPAAppearanceSettings : HBAppearanceSettings
 @end
 
-@interface CPARootListController : HBRootListController {
-    UITableView * _table;
-}
+@interface CPARootListController : HBRootListController
+@property(nonatomic, retain)CPAAppearanceSettings* appearanceSettings;
+@property(nonatomic, retain)HBPreferences* preferences;
 @property(nonatomic, retain)UISwitch* enableSwitch;
-@property (nonatomic, retain) UIView *headerView;
-@property (nonatomic, retain) UIImageView *headerImageView;
-@property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UIImageView *iconView;
-- (void)toggleState;
-- (void)setEnableSwitchState;
-- (void)blacklistApps;
+@property(nonatomic, retain)UIBarButtonItem* item;
+@property(nonatomic, retain)UIView* headerView;
+@property(nonatomic, retain)UIImageView* headerImageView;
+@property(nonatomic, retain)UILabel* titleLabel;
+@property(nonatomic, retain)UIImageView* iconView;
+@property(nonatomic, retain)UIBlurEffect* blur;
+@property(nonatomic, retain)UIVisualEffectView* blurView;
+- (void)setEnabled;
+- (void)setEnabledState;
 - (void)resetPrompt;
 - (void)resetPreferences;
-- (void)resetClipboardPrompt;
-- (void)resetClipboard;
 - (void)respring;
-- (void)respringUtil;
-@end
-
-@interface NSTask : NSObject
-@property(copy)NSString* launchPath;
-- (void)launch;
 @end

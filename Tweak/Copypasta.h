@@ -8,11 +8,13 @@
 
 HBPreferences* preferences;
 
-extern BOOL enabled;
+BOOL enabled;
 
 CPAView* cpaView;
 CPAObserver* cpaObserver;
 UISwipeGestureRecognizer* upSwipe;
+
+// style
 BOOL darkMode;
 
 // activation

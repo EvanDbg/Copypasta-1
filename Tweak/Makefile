@@ -1,7 +1,7 @@
 GO_EASY_ON_ME = 1
 
 TWEAK_NAME = Copypasta
-$(TWEAK_NAME)_FILES = Tweak.x CPAItem.m CPALabel.m CPAManager.m CPAObserver.m CPAView.m
+$(TWEAK_NAME)_FILES = Copypasta.x $(wildcard *.m)
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc
 $(TWEAK_NAME)_FRAMEWORKS = UIKit
 $(TWEAK_NAME)_EXTRA_FRAMEWORKS = Cephei

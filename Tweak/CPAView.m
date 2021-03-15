@@ -117,16 +117,15 @@
     self.headerLabel.translatesAutoresizingMaskIntoConstraints = NO;
 
     [NSLayoutConstraint activateConstraints:@[
-        [self.headerLabel.topAnchor constraintEqualToAnchor:self.headerView.topAnchor constant:0],
+        [self.headerLabel.topAnchor constraintEqualToAnchor:self.headerView.topAnchor constant:24],
         [self.headerLabel.leadingAnchor constraintEqualToAnchor:self.headerView.leadingAnchor constant:0],
-        [self.headerLabel.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor constant:65],
         [self.headerLabel.widthAnchor constraintEqualToConstant:200],
     ]];
 
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
 
     [NSLayoutConstraint activateConstraints:@[
-        [self.tableView.topAnchor constraintEqualToAnchor:self.wrapperView.topAnchor constant:60],
+        [self.tableView.topAnchor constraintEqualToAnchor:self.headerLabel.bottomAnchor constant:16],
         [self.tableView.leadingAnchor constraintEqualToAnchor:self.wrapperView.leadingAnchor constant:5],
         [self.tableView.trailingAnchor constraintEqualToAnchor:self.wrapperView.trailingAnchor constant:-5],
         [self.tableView.bottomAnchor constraintEqualToAnchor:self.wrapperView.bottomAnchor constant:0]

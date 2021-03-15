@@ -26,7 +26,7 @@
 			<key>label</key>
 			<string>Activation</string>
 			<key>footerText</key>
-			<string>These Will Be Ignored If Always Show Chevron Is Enabled</string>
+			<string>These will be ignored if always show chevron is enabled</string>
 			<key>isStaticText</key>
 			<true/>
 		</dict>
@@ -38,7 +38,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Swipe Up</string>
+			<string>Swipe up</string>
 			<key>key</key>
 			<string>useSwipeUp</string>
 			<key>PostNotification</key>
@@ -52,7 +52,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Dictation Key</string>
+			<string>Dictation key</string>
 			<key>key</key>
 			<string>useDictationKey</string>
 			<key>PostNotification</key>
@@ -66,7 +66,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Keyboard Input Mode</string>
+			<string>Keyboard input mode</string>
 			<key>key</key>
 			<string>useKeyboardInputMode</string>
 			<key>PostNotification</key>
@@ -111,7 +111,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Blurry Background</string>
+			<string>Blurry background</string>
 			<key>key</key>
 			<string>blurryBackground</string>
 			<key>PostNotification</key>
@@ -125,7 +125,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Show Names</string>
+			<string>Show names</string>
 			<key>key</key>
 			<string>showNames</string>
 			<key>PostNotification</key>
@@ -139,7 +139,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Show Icons</string>
+			<string>Show icons</string>
 			<key>key</key>
 			<string>showIcons</string>
 			<key>PostNotification</key>
@@ -153,7 +153,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Always Show Chevron</string>
+			<string>Always show chevron</string>
 			<key>key</key>
 			<string>alwaysShowChevron</string>
 			<key>PostNotification</key>
@@ -167,7 +167,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Hide Chevron</string>
+			<string>Hide chevron</string>
 			<key>key</key>
 			<string>hideChevron</string>
 			<key>PostNotification</key>
@@ -181,7 +181,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Background Image</string>
+			<string>Background image</string>
 			<key>key</key>
 			<string>useBackgroundImage</string>
 			<key>PostNotification</key>
@@ -193,7 +193,7 @@
 			<key>cellClass</key>
 			<string>GcImagePickerCell</string>
 			<key>label</key>
-			<string>Choose Background</string>
+			<string>Choose background</string>
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>key</key>
@@ -209,7 +209,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Background Image Alpha</string>
+			<string>Background image alpha</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -274,7 +274,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Dismiss After Paste</string>
+			<string>Dismiss after paste</string>
 			<key>key</key>
 			<string>dismissAfterPaste</string>
 			<key>PostNotification</key>
@@ -288,7 +288,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Haptic Feedback</string>
+			<string>Haptic feedback</string>
 			<key>key</key>
 			<string>hapticFeedback</string>
 			<key>PostNotification</key>
@@ -298,7 +298,7 @@
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
-			<string>Maximum Items</string>
+			<string>Maximum items</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -324,7 +324,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Blacklist Apps</string>
+			<string>Blacklist apps</string>
 			<key>action</key>
 			<string>blacklistApps</string>
 		</dict>
@@ -333,7 +333,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Regular Expressions Filters</string>
+			<string>Regular expressions filters</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -343,7 +343,7 @@
 			<key>defaults</key>
 			<string>love.litten.copypastapreferences</string>
 			<key>label</key>
-			<string>Enable Regular Expressions</string>
+			<string>Enable regular expressions</string>
 			<key>key</key>
 			<string>enableRegex</string>
 			<key>PostNotification</key>
@@ -379,8 +379,8 @@
             </array>
             <key>validTitles</key>
             <array>
-                <string>Include Only Matches</string>
-            	<string>Exclude All But Matches</string>
+                <string>Include only matches</string>
+            	<string>Exclude all but matches</string>
             </array>
 			<key>PostNotification</key>
 			<string>love.litten.copypastapreferences/ReloadPrefs</string>
@@ -390,7 +390,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Other Options</string>
+			<string>Other options</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -404,7 +404,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Reset Preferences</string>
+			<string>Reset preferences</string>
 			<key>action</key>
 			<string>resetPrompt</string>
 		</dict>
@@ -412,7 +412,7 @@
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Reset Clipboard</string>
+			<string>Reset clipboard</string>
 			<key>action</key>
 			<string>resetClipboardPrompt</string>
 		</dict>
@@ -438,7 +438,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>You Might Like:</string>
+			<string>You might like:</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>
@@ -469,7 +469,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>Copypasta By Nepeta, Updated By Litten</string>
+			<string>Copypasta by Nepeta, updated by Litten</string>
 			<key>isStaticText</key>
 			<true/>
 		</dict>
@@ -487,7 +487,7 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Source Code</string>
+			<string>Source code</string>
 			<key>subtitle</key>
 			<string>GitHub 🎃</string>
 			<key>url</key>
@@ -497,7 +497,7 @@
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
 			<key>label</key>
-			<string>Donate To Litten</string>
+			<string>Donate to Litten</string>
 			<key>subtitle</key>
 			<string>Appreciated 💝</string>
 			<key>url</key>
