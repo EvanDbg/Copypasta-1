@@ -26,7 +26,7 @@
     self.navigationItem.titleView = [UIView new];
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [[self titleLabel] setFont:[UIFont boldSystemFontOfSize:17]];
-    [[self titleLabel] setText:@"1.3.1"];
+    [[self titleLabel] setText:@"1.3.2"];
     [[self titleLabel] setTextColor:[UIColor whiteColor]];
     [[self titleLabel] setTextAlignment:NSTextAlignmentCenter];
     [[[self navigationItem] titleView] addSubview:[self titleLabel]];
@@ -73,6 +73,24 @@
         [self.headerImageView.trailingAnchor constraintEqualToAnchor:self.headerView.trailingAnchor],
         [self.headerImageView.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor],
     ]];
+
+    size_t size;
+    cpu_type_t type;
+    cpu_subtype_t subtype;
+    size = sizeof(type);
+    sysctlbyname("hw.cputype", &type, &size, NULL, 0);
+    size = sizeof(subtype);
+    sysctlbyname("hw.cpusubtype", &subtype, &size, NULL, 0);
+
+    if (type == 16777228 && subtype == 2) {
+        UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"You're using an arm64e device, you may or may not experience issues with this tweak on this architecture\n\n If some system apps start crashing, either uninstall this tweak or install choicy and blacklist Copypasta from injecting into that app" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Understood" style:UIAlertActionStyleDestructive handler:nil];
+
+        [alertController addAction:confirmAction];
+
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 
     if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Library/MobileSubstrate/DynamicLibraries/Copypasta.disabled"]) {
         [[self enableSwitch] setEnabled:NO];
@@ -183,6 +201,15 @@
 
 }
 
+- (void)blacklistApps {
+
+    SparkAppListTableViewController* blacklistController = [[SparkAppListTableViewController alloc] initWithIdentifier:@"love.litten.copypasta.blacklistpreferences" andKey:@"blacklistedApps"];
+
+    [[self navigationController] pushViewController:blacklistController animated:YES];
+    [[self navigationItem] setHidesBackButton:NO];
+
+}
+
 - (void)resetPrompt {
 
     UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"Do you really want to reset your preferences?" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -206,6 +233,32 @@
     
     [[self enableSwitch] setOn:NO animated:YES];
     [self respring];
+
+}
+
+- (void)resetClipboardPrompt {
+
+    UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"Copypasta" message:@"This will reset your clipboard" preferredStyle:UIAlertControllerStyleActionSheet];
+	
+    UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Okey" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+        [self resetClipboard];
+	}];
+
+	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+
+	[resetAlert addAction:confirmAction];
+	[resetAlert addAction:cancelAction];
+
+	[self presentViewController:resetAlert animated:YES completion:nil];
+
+}
+
+- (void)resetClipboard {
+
+    HBPreferences* preferences = [[HBPreferences alloc] initWithIdentifier: @"love.litten.copypasta-items"];
+    [preferences removeAllObjects];
+
+    CFNotificationCenterPostNotification(CFNotificationCenterGetDarwinNotifyCenter(), (CFStringRef)@"love.litten.copypasta/ReloadItems", nil, nil, YES);
 
 }
 

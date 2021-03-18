@@ -4,6 +4,10 @@
 #import <CepheiPrefs/HBAppearanceSettings.h>
 #import <Cephei/HBPreferences.h>
 #import <Cephei/HBRespringController.h>
+#import "SparkAppListTableViewController.h"
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#include <mach/machine.h>
 
 @interface CPAAppearanceSettings : HBAppearanceSettings
 @end
