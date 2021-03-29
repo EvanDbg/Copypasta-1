@@ -16,7 +16,11 @@
 
 - (void)pasteboardUpdated {
 
+    // accessing [UIPasteboard generalPasteboard] sometimes causes another UIPasteboardChangedNotification to be sent
+    // to prevent crashes due to an infinite recursion, we need to remove the observer while calling it
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSString* content = [[UIPasteboard generalPasteboard] string];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pasteboardUpdated) name:UIPasteboardChangedNotification object:nil];
     if (!content) return;
 
     if (self.lastContent && [self.lastContent isEqualToString:content]) return;
